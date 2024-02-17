@@ -22,6 +22,11 @@ export class GifsService {
     if (this._tagHistory.includes(tag)) { this._tagHistory = this._tagHistory.filter((oldTag) => oldTag !== tag); }
     this._tagHistory.unshift(tag);
     this._tagHistory = this._tagHistory.splice(0, 10);
+    this.saveLocalStorage();
+  }
+
+  private saveLocalStorage(): void {
+    localStorage.setItem('history', JSON.stringify(this._tagHistory));
   }
 
 
